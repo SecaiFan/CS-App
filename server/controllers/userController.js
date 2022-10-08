@@ -52,9 +52,12 @@ class UserController {
             res.status(400).json({message:"Login error!"});
         }
     }
-    async check(req, res, next) {
+    async check(req, res) {
         const token = generateJWT(req.user.id, req.user.login, req.user.role);
         return res.json({token});
+    }
+    async sendCandidatesData(req, res) {
+        res.render('index', {layout: false});
     }
 }
 

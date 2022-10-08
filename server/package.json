@@ -11,11 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "handlebars": "^4.7.7",
+    "hbs": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
+    "pug": "^3.0.2",
     "sequelize": "^6.23.2"
   },
   "devDependencies": {
