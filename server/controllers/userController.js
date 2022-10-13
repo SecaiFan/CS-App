@@ -25,7 +25,10 @@ class UserController {
             const hashPassword = await bcrypt.hash(password, 5);
             const user = await User.create({login, role, password: hashPassword});
             const token = generateJWT(user.id, user.login, user.role);
-            return res.json({token});
+            res.render('greeting', {
+                layout: false,
+                user: user.login
+            });
         } catch(e) {
             console.log(e);
             res.status(400).json({message:"Registration error!"});
@@ -46,7 +49,10 @@ class UserController {
                 return next(ApiError.badRequest("Неверный пароль"));
             }
             const token = generateJWT(user.id, user.login, user.role);
-            return res.json({token});
+            res.render('greeting', {
+                layout: false,
+                user: user.login
+            });
         } catch(e) {
             console.log(e);
             res.status(400).json({message:"Login error!"});
@@ -57,7 +63,10 @@ class UserController {
         return res.json({token});
     }
     async sendCandidatesData(req, res) {
-        res.render('index', {layout: false});
+        res.render('registration', {layout: false});
+    }
+    async sendUserData(req, res) {
+        res.render('login', {layout: false});
     }
 }
 
