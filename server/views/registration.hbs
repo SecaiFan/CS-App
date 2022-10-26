@@ -11,33 +11,48 @@
 <div class="parent">
     <div class="form_container">
         <div class="logo">
-            <p>Sign in to MyApp</p>
+            <p>Sign up to MyApp</p>
         </div>
         <form method = "POST" action="">
             <div class="input">
                 <div class="inp_txt">
-                    <p>Username</p>
+                    <p>Email</p>
                 </div>
                 <input type="text" size="30" maxlength="25" name="login" required>
                 <div class="inp_txt">
                     <p>Password</p>
                 </div>
                 <input type="password" size="30" maxlength="25" name="password" required>
+                <div class="inp_txt">
+                    <p>Repeat your password</p>
+                </div>
+                <input type="password" size="30" maxlength="25" name="rep_password" required>
             </div>
             <div class="inp_send">
                 <div class="inp_act">
                     <input type="submit" value="Sign up" >
                 </div>
                 <p class="select">or</p>
-                
-                    <!--input type="button" onclick="window.location.href=" value="Sign In" -->
-                    <a href="/api/user/login" class="redirect">
+                    <a href="login" class="redirect">
                     <div class="redirect">Sign In</div>
                     </a>
-                
             </div>
         </form>
-        
+        {{#if userExist}}
+            <div class="error">
+                <p>{{msg}}</p>
+            </div>
+        {{/if}}
+        {{#if error}}
+            <div class="error">
+                <p>{{msg}}</p>
+            </div>
+        {{/if}}
+        {{#if unMatch}}
+            <div class="error">
+                <p>{{msg}}</p>
+            </div>
+        {{/if}}
     </div>
 </body>
 </html>

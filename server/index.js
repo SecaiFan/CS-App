@@ -1,4 +1,5 @@
 require('dotenv').config();
+//console.log(require('crypto').randomBytes(64).toString('hex'));
 const express = require('express');
 const sequelize = require('./DB');
 const cors = require('cors');
@@ -17,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_KEY));
 
 app.use('/api', router);
 

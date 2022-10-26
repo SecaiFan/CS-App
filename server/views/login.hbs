@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-
 <div class="parent">
     <div class="form_container">
         <div class="logo">
@@ -30,7 +29,21 @@
                 </div>
             </div>
         </form>
-        
+        {{#if error}}
+            <div class="error">
+                <p>{{msg}}</p>
+            </div>
+        {{/if}}
+        {{#if userNotExist}}
+            <div class="error">
+                <p>{{msg}}</p>
+            </div>
+        {{/if}}
+        {{#if invalidPass}}
+            <div class="error">
+                <p>{{msg}}</p>
+            </div>
+        {{/if}}
     </div>
 </div>
 </body>
