@@ -38,12 +38,12 @@
                     </a>
             </div>
         </form>
-        {{#if userExist}}
+        {{#if error}}
             <div class="error">
                 <p>{{msg}}</p>
             </div>
         {{/if}}
-        {{#if error}}
+        {{#if userExist}}
             <div class="error">
                 <p>{{msg}}</p>
             </div>
@@ -54,5 +54,6 @@
             </div>
         {{/if}}
     </div>
+</div>
 </body>
 </html>

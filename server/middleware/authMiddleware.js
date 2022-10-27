@@ -15,7 +15,7 @@ module.exports = function (req, res, next) {
                 return res.cookie('token', token, {
                     maxAge: 12*3600,
                     secure: true,
-                    httpOnly: true
+                    httpOnly: true,
                 }).redirect('greet');
             } else {
                 next();

@@ -8,7 +8,7 @@ const generateJWT = function(id, login, role) {
     return jwt.sign(
         {id: id, login: login, role: role},
         process.env.SECRET_KEY,
-        {expiresIn: '24h'}
+        {expiresIn: '24h'},
     );
 };
 
@@ -126,7 +126,7 @@ class UserController {
     async greetingUser(req, res) {
         return res.render('greeting', {
             layout: false,
-            user: req.login
+            user: req.login,
         });
     }
 }

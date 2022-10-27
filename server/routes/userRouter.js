@@ -14,10 +14,10 @@ router.post('/registration',
     body('password')
         .trim()
         .isLength({min: 6})
-        .withMessage("Must be at least 6 chars long")
+        .withMessage("Пароль должен содержать не менее 6 символов")
         .escape()
         .matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, "i")
-        .withMessage("Password is weak. Try again"),
+        .withMessage("Пароль должен содержать хотя бы один символ, не являющийся цифрой"),
     userController.registration);
 router.get('/login', authMiddleware, userController.sendUserData);
 router.post('/login', userController.login);
