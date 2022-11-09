@@ -29,11 +29,17 @@
 ## Пользовательский интерфейс
 Необходимо создать три страницы: страницу регистрации, страницу входа и основную страницу сайта
 1. Страница входа
+
 ![login_page](pictures/Login_page.png)
+
 2. Страница регистрации
+
 ![reg_page](pictures/Registration_page.png)
+
 3. Главная страница сайта
+
 ![greet_page](pictures/User_greeting_page.png)
+
 ## Пользовательские сценарии работы
 1. При вводе в адресной строке /api/user/registration, если пользователь не авторизован, то он переносится на форму регистрации 
     - При вводе не занятого логина и пароля, удовлетворяющего минимальным требованиям безопасности, пользователь переносится на основную страницу сайта /api/user/greet
@@ -62,27 +68,45 @@
 Администрирование базы данных осуществлялось с помощью приложения MySQL Workbench.
 ## Описание алгоритмов
 1. Алгоритм регистрации
+
 ![reg_alg](pictures/reg_alg.png)
+
 2. Алгоритм авторизаации
+
 ![login_alg](pictures/enter_alg.png)
+
 3. Алгоритм аутентификации
+
 ![auth_alg](pictures/auth_alg.png)
+
 4. Алгоритм выхода
+
 ![exit_alg](pictures/exit_alg.png)
 
 ----
 # Примеры HTTP запросов/ответов
 Регистрация: сценарий с верными данными
+
 ![reg_scen1](pictures/registration_scen_1.png)
+
 Регистрация: сценарий с неверными данными
+
 ![reg_scen2](pictures/registration_scen_2.png)
+
 Авторизация: сценарий с верными данными
+
 ![login_scen1](pictures/authorization_scen_1.png)
+
 Авторизация: сценарий с неверными данными
+
 ![login_scen2](pictures/authorization_scen_2.png)
+
 Аутентификация: сценарий с токеном
+
 ![auth_scen1](pictures/unauthorization_scen_1.png)
+
 Аутентификация: сценарий без токена
+
 ![auth_scen2](pictures/unauthorization_scen_2.png)
 
 ----
