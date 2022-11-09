@@ -25,9 +25,10 @@ class UserController {
                     layout: false,
                 });
             }
+            console.log(req.body);
             const {login, password, rep_password, role} = req.body;
             if(!login || !password || !rep_password) {
-                return next(ApiError.badRequest("Некорректный login или password!"));
+                return res.status(520).json({message:"Unknown error!"});
             }
             const candidate = await User.findOne({where: {login: login}});
             if (candidate) {
@@ -50,15 +51,14 @@ class UserController {
             await User.update({token: token}, {where: {
                 login: user.login
             }});
-            console.log(token);
-            return res.cookie('token', token, {
+            return res.status(303).cookie('token', token, {
                 maxAge: 12*3600,
                 secure: true,
                 httpOnly: true
             }).redirect('greet');
         } catch(e) {
             console.log(e);
-            res.status(400).json({message:"Registration error!"});
+            res.status(500).json({message:"Registration error!"});
         }
     }
     async login(req, res, next) {
@@ -78,43 +78,40 @@ class UserController {
                 return next(ApiError.badRequest("Некорректный login или password!"));
             }
             const user = await User.findOne({where: {login: login}});
-            if (!user) {
+            let comparePassword;
+            if(user) comparePassword = await bcrypt.compare(password, user.password);
+            if (!user || !comparePassword) {
                 return res.render('login', {
-                    userNotExist: true,
-                    msg: "Пользователь с таким именем не найден",
-                    layout: false,
-                });
-            }
-            let comparePassword = await bcrypt.compare(password, user.password);
-            if(!comparePassword) {
-                return res.render('login', {
-                    invalidPass: true,
-                    msg: "Неверный пароль",
+                    userCheck: true,
+                    msg: "Неверный логин или пароль",
                     layout: false,
                 });
             }
             const token = generateJWT(user.id, user.login, user.role);
-            return res.cookie('token', token, {
+            await User.update({token: token}, {where: {
+                    login: user.login
+                }});
+            return res.status(303).cookie('token', token, {
                 maxAge: 12*3600,
                 secure: true,
                 httpOnly: true
             }).redirect('greet');
         } catch(e) {
             console.log(e);
-            res.status(400).json({message:"Login error!"});
+            res.status(500).json({message:"Login error!"});
         }
     }
     async logout(req, res) {
         try {
             const login = req.login;
-            await User.update({token: ""}, {where: {
+            await User.update({token: null}, {where: {
                 login: login
             }});
             res.clearCookie('token');
             return res.redirect('registration');
         } catch(e) {
             console.log(e);
-            res.status(400).json({message:"Logout error!"});
+            res.status(500).json({message:"Logout error!"});
         }
     }
     async sendCandidatesData(req, res) {
@@ -124,6 +121,7 @@ class UserController {
         res.render('login', {layout: false});
     }
     async greetingUser(req, res) {
+        console.log(req.cookies);
         return res.render('greeting', {
             layout: false,
             user: req.login,
