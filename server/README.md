@@ -29,11 +29,11 @@
 ## Пользовательский интерфейс
 Необходимо создать три страницы: страницу регистрации, страницу входа и основную страницу сайта
 1. Страница входа
-![login_page](pictures/Login page.png)
+![login_page](pictures/Login_page.png)
 2. Страница регистрации
-![reg_page](pictures/Registration page.png)
+![reg_page](pictures/Registration_page.png)
 3. Главная страница сайта
-![greet_page](pictures/User greeting page.png)
+![greet_page](pictures/User_greeting_page.png)
 ## Пользовательские сценарии работы
 1. При вводе в адресной строке /api/user/registration, если пользователь не авторизован, то он переносится на форму регистрации 
     - При вводе не занятого логина и пароля, удовлетворяющего минимальным требованиям безопасности, пользователь переносится на основную страницу сайта /api/user/greet
@@ -73,17 +73,17 @@
 ----
 # Примеры HTTP запросов/ответов
 Регистрация: сценарий с верными данными
-![reg_scen1](pictures/registration scen 1.png)
+![reg_scen1](pictures/registration_scen_1.png)
 Регистрация: сценарий с неверными данными
-![reg_scen2](pictures/registration scen 2.png)
+![reg_scen2](pictures/registration_scen_2.png)
 Авторизация: сценарий с верными данными
-![login_scen1](pictures/authorization scen 1.png)
+![login_scen1](pictures/authorization_scen_1.png)
 Авторизация: сценарий с неверными данными
-![login_scen2](pictures/authorization scen 2.png)
+![login_scen2](pictures/authorization_scen_2.png)
 Аутентификация: сценарий с токеном
-![auth_scen1](pictures/unauthorization scen 1.png)
+![auth_scen1](pictures/unauthorization_scen_1.png)
 Аутентификация: сценарий без токена
-![auth_scen2](pictures/unauthorization scen 2.png)
+![auth_scen2](pictures/unauthorization_scen_2.png)
 
 ----
 # Значимые фрагменты кода
