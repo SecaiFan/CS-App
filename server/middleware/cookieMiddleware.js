@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
     }
     try {
         const token = req.cookies.token;
-        if(!token) return res.redirect('registration');
+        if(!token) return res.status(401).redirect('registration');
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         req.login = decoded.login;
         next();
