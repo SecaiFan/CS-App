@@ -8,8 +8,6 @@ const cookieMiddleware = require('../middleware/cookieMiddleware');
 router.get('/registration', authMiddleware, userController.sendCandidatesData);
 router.post('/registration',
     body('login')
-        .isEmail()
-        .withMessage("Incorrect email")
         .escape(),
     body('password')
         .trim()
@@ -20,7 +18,12 @@ router.post('/registration',
         .withMessage("Пароль должен содержать хотя бы один символ, не являющийся цифрой"),
     userController.registration);
 router.get('/login', authMiddleware, userController.sendUserData);
-router.post('/login', userController.login);
+router.post('/login',
+    body('login')
+        .escape(),
+    body('password')
+        .escape(),
+    userController.login);
 router.get('/greet',cookieMiddleware, userController.greetingUser);
 router.get('/logout',cookieMiddleware, userController.logout);
 
