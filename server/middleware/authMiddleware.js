@@ -12,7 +12,7 @@ module.exports = function (req, res, next) {
         } else {
             const candidate = User.findOne({where: {token: token}});
             if(candidate) {
-                return res.cookie('token', token, {
+                return res.status(303).cookie('token', token, {
                     maxAge: 12*3600,
                     secure: true,
                     httpOnly: true,
