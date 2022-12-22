@@ -1,15 +1,13 @@
 require('dotenv').config();
-//console.log(require('crypto').randomBytes(64).toString('hex'));
+console.log(require('crypto').randomBytes(64).toString('hex'));
 const express = require('express');
 const sequelize = require('./DB');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
-const models = require('./models/models');
 const router = require('./routes/index');
 const errorHandler = require('./middleware/ErrorHandlingMiddleware');
-const Router = require("express");
 
 const PORT = process.env.PORT ?? 7000;
 

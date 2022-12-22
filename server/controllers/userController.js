@@ -52,7 +52,7 @@ class UserController {
                 login: user.login
             }});
             return res.status(303).cookie('token', token, {
-                maxAge: 12*3600,
+                maxAge: 3600*1000,
                 secure: true,
                 httpOnly: true
             }).redirect('greet');
@@ -92,7 +92,7 @@ class UserController {
                     login: user.login
                 }});
             return res.status(303).cookie('token', token, {
-                maxAge: 12*3600,
+                maxAge: 3600*1000,
                 secure: true,
                 httpOnly: true
             }).redirect('greet');
